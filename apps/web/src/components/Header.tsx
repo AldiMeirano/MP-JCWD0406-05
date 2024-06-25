@@ -8,6 +8,7 @@ import { AiOutlineMenu, AiOutlineClose } from 'react-icons/ai';
 import axios from 'axios';
 import DropdownMenu from './DropDownMenu';
 import { loginAction } from '@/lib/feature/userSlice';
+import BottomBar from './Bottombar';
 
 const Navbar = () => {
   const [nav, setNav] = useState(false);
@@ -36,40 +37,26 @@ const Navbar = () => {
       }
     };
     keepLogin();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  useEffect(() => {
-    const changeColor = () => {
-      if (typeof window !== 'undefined') {
-        if (window.scrollY >= 90) {
-          setColor('#ffffff');
-          setTextColor('#000000');
-        } else {
-          setColor('transparent');
-          setTextColor('#ffffff');
-        }
-      }
-    };
-    window.addEventListener('scroll', changeColor);
 
-    // Cleanup the event listener when the component is unmounted
-    return () => {
-      window.removeEventListener('scroll', changeColor);
-    };
-  }, [window.scrollY]);
 
   return (
     <div
-      style={{ backgroundColor: `${color}` }}
-      className="fixed left-0 top-0 w-full z-10 ease-in duration-300"
+    
+      className="fixed left-0 top-0 w-full z-10 ease-in duration-300 bg-white "
     >
-      <div className="max-w-[1240px] m-auto flex justify-between items-center p-4 text-white">
+      <div className="max-w-[1240px] m-auto flex justify-between items-center p-2 text-white">
         <Link href="/">
-          <h1 style={{ color: `${textColor}` }} className="font-bold text-3xl">
+          <h1 className="text-black font-bold text-3xl">
             MyEvent
           </h1>
         </Link>
-        <ul style={{ color: `${textColor}` }} className="hidden sm:flex">
+        <div className='bg-red'>
+          <BottomBar /> 
+        </div>
+        <ul className="text-black hidden sm:flex">
           <li className="p-4">
             <Link href="/">Home</Link>
           </li>

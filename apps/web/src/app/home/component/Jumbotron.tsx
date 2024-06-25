@@ -39,6 +39,8 @@ const LandingPage = () => {
           </form>
         </div>
       </div>
+   
+  
     </section>
   );
 };
